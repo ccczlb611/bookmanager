@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    publisher_edit
+{% endblock %}
+
+{% block pub_active %}
+    active
+{% endblock %}
+
+{% block content %}
+    <form class="form-horizontal" method="post" action="">
+        {% csrf_token %}
+          <div class="form-group">
+            <label for="pub_name" class="col-sm-2 control-label">出版社名称</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" id="pub_name" name="pub_name">
+                    <span style="color:red">{{ error }}</span>
+                </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default">保存</button>
+            </div>
+          </div>
+    </form>
+
+
+
+{#    <form action="" method="post">#}
+{#        {% csrf_token %}#}
+{#        <p>#}
+{#            出版社名称: <input type="text" name="pub_name">#}
+{#            <span>{{ error }}</span>#}
+{#        </p>#}
+{#        <p>#}
+{#            <button>提交</button>#}
+{#        </p>#}
+{#    </form>#}
+
+{% endblock %}

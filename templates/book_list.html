@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+   book
+{% endblock %}
+
+{% block book_active %}
+    active
+{% endblock %}
+
+{% block content %}
+
+          <h2 class="sub-header">书籍列表</h2>
+            <a class="btn btn-info btn-default" href={% url 'app01:book_add' %}>添加书籍</a>
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>ID</th>
+                        <th>书籍名称</th>
+                        <th>出版社</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in books %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ book.id }}</td>
+                            <td>{{ book.title }}</td>
+{# pub对象定义了__str__方法#}
+                            <td>{{ book.pub }}</td>
+                            <td><a class="btn btn-danger btn-sm" href={% url 'app01:del' 'book' book.pk %}>删除</a></td>
+                            <td><a class="btn btn-primary btn-sm" href={% url 'app01:book_edit' book.pk %}>编辑</a></td>
+                        </tr>
+                    {% endfor %}
+               </tbody>
+
+            </table>
+          </div>
+
+{% endblock %}

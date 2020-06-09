@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+
+    </title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.3.7-dist/css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{#    <link rel="stylesheet" href="/static/plugins/bootstrap-3.3.7-dist/css/bootstrap.css">#}
+{#    <link rel="stylesheet" href="/static/css/dashboard.css">#}
+    <style>
+        * {
+            font-family:"微软雅黑";
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">图书管理系统</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="{% block pub_active%} {% endblock %}"><a href="{% url 'app01:publisher' %}">出版社列表 <span class="sr-only">(current)</span></a></li>
+            <li class="{% block book_active%} {% endblock %}"><a href="{% url 'app01:book' %}">书籍列表</a></li>
+            <li class="{% block author_active%} {% endblock %}"><a href="{% url 'app01:author' %}">作者列表</a></li>
+{#            <li><a href="#">Export</a></li>#}
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+            {% block content %}
+
+            {% endblock %}
+
+
+
+        </div>
+      </div>
+    </div>
+
+</body>
+
+
+</html>
